@@ -26,15 +26,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-
             OmviceTheme {
                 NavigationComponent(onVideoResize = ::setupPip, navController = navController)
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = Color.White
-//                ) {
-//                    VideoScreen("https://www.pexels.com/video/6507676/download/", ::setupPip)
-//                }
             }
         }
     }
@@ -72,6 +65,3 @@ fun NavigationComponent(
         }
     }
 }
-
-val videoURL = "https://www.pexels.com/video/2795405/download/"
-
