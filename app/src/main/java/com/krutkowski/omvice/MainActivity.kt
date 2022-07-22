@@ -43,7 +43,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 fun NavigationComponent(
     onVideoResize: (videoSize: VideoSize) -> Unit,
