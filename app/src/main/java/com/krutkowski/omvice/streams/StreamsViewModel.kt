@@ -1,5 +1,6 @@
 package com.krutkowski.omvice.streams
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.krutkowski.omvice.data.stream.StreamDataSource
@@ -25,7 +26,7 @@ class StreamsViewModel(private val streamRepository: StreamDataSource) : ViewMod
 
     private fun observeStreams() {
         viewModelScope.launch {
-            streamRepository.observeStreams().collect { streams ->
+            streamRepository.observeStreams().collect() { streams ->
                 viewModelState.update { it.copy(streamItems = streams) }
             }
         }

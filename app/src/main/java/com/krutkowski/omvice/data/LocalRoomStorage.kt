@@ -8,11 +8,13 @@ import androidx.room.Room
  */
 class LocalRoomStorage(private val context: Context) : RoomStorage {
 
+    private val databaseName = DATABASE_NAME
+    private val room = Room.databaseBuilder(context, OmviceAppDatabase::class.java, databaseName)
+        .fallbackToDestructiveMigration()
+        .build()
+
     override fun getDatabase(): OmviceAppDatabase {
-        val databaseName = DATABASE_NAME
-        return Room.databaseBuilder(context, OmviceAppDatabase::class.java, databaseName)
-            .fallbackToDestructiveMigration()
-            .build()
+        return room
     }
 
     private companion object {

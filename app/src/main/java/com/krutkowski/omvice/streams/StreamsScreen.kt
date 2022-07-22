@@ -46,7 +46,6 @@ fun StreamsListScreen(
     val uiState by viewModel.uiState.collectAsState()
     LaunchedEffect(Unit) { viewModel.loadStreams() }
     StreamsScreen(
-        navController = navController,
         uiState = uiState,
         onRefreshClick = { viewModel.refreshStreams() },
         onStreamClick = { navController.navigate("stream/${it.videoUrl}") },
@@ -58,16 +57,13 @@ fun StreamsListScreen(
 @Composable
 fun StreamsScreen(
     modifier: Modifier = Modifier,
-    navController: NavHostController,
     uiState: StreamsUiState,
     onRefreshClick: () -> Unit,
     onStreamClick: (StreamMetadata) -> Unit,
     onErrorClear: () -> Unit,
     scaffoldState: ScaffoldState
 ) {
-
     Scaffold(topBar = { TopBar() }) {
-
         LoadingContent(
             empty = when (uiState) {
                 is StreamsUiState.HasStreams -> false
